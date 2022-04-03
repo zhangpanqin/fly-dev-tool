@@ -33,7 +33,9 @@ echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 # 查看目录列表，tree -L 1 , -L 指定最大深度
 brew install tree
 brew install fzf
-
+# 目录环境变量添加 .envrc export GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa_rba"
+brew install direnv
+eval "$(direnv hook zsh)"
 # 配置 zsh 插件
 # j 智能进入目录
 brew install autojump
@@ -42,10 +44,11 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
-# zsh 插件配置 ~/.zshrc
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-plugins=(git autojump zsh-syntax-highlighting zsh-autosuggestions kubectl)
-source $ZSH/oh-my-zsh.sh
+
+# 插入以下内容到 ~/.zshrc
+# fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+# plugins=(git autojump zsh-syntax-highlighting zsh-autosuggestions kubectl)
+# source $ZSH/oh-my-zsh.sh
 ```
 
 ### AWS 和 EKS
