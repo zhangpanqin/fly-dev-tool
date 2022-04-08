@@ -55,10 +55,15 @@ ssh local_centos7 "curl -fsSL -O https://raw.githubusercontent.com/zhangpanqin/f
 
 
 
-## 基础命令
+## 有趣命令
+
+#### 判断程序是否安装
 
 ```shell
-# 递归创建命令
-mkdir -p /home/panqin/aa/bb
+if [[ "$(command -v brew)" ]]; then
+    echo "安装"
+else
+    echo "没散装"
+fi
 ```
 
