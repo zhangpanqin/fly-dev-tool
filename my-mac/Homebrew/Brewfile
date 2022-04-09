@@ -1,25 +1,25 @@
 # # 'brew tap'
-# tap "homebrew/cask"
-# tap "homebrew/bundle"
-# tap "homebrew/cask-fonts"
-# tap "homebrew/core"
-# tap "homebrew/services"
+tap "homebrew/cask"
+tap "homebrew/bundle"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
+tap "homebrew/services"
 #
 # # set arguments for all 'brew install --cask' commands
 # # cask_args appdir: "/Applications", require_sha: true
-# cask_args appdir: "/Applications"
+cask_args appdir: "/Applications"
 #
 #
 #
 # # 'brew install --cask'
-# brew "git"
+brew "git"
 # # 配置 zsh
-# cask "iterm2"
+cask "iterm2"
 # # starship
-# cask "font-hack-nerd-font"
+cask "font-hack-nerd-font"
 # # 'brew install'
-# brew "zsh"
-# brew "starship"
+brew "zsh"
+brew "starship"
 #
 #
 # # 查看目录列表，tree -L 1 , -L 指定最大深度
