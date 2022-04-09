@@ -43,7 +43,8 @@ function config_zsh() {
     echo "已经安装了 on my zsh"
   else
     echo "安装 on my zsh"
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    source "${HOME}/.zshrc"
   fi
   # 配置 zsh
   if [[ -d "${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-syntax-highlighting" ]]; then
