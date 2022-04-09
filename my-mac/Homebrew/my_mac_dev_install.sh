@@ -27,6 +27,12 @@ function install_brew_app() {
 function config_git() {
   git config --global user.name "zhangpanqin"
   git config --global user.email "zhangpanqin@outlook.com"
+  config_gpg
+}
+
+function config_gpg() {
+  echo "pinentry-program /usr/local/bin/pinentry-mac" >>~/.gnupg/gpg-agent.conf
+  killall gpg-agent
 }
 
 # 配置 zsh
@@ -63,6 +69,7 @@ function config_zsh() {
     mv "${HOME}/.zshrc" "${HOME}/.zshrc${backupFileSuffix}"
   fi
   cat <<EOF >"${HOME}/.zshrc"
+export PATH="/usr/local/sbin:$PATH"
 export ZSH="\$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 eval "\$(starship init zsh)"
@@ -72,7 +79,6 @@ plugins=(git autojump zsh-syntax-highlighting zsh-autosuggestions kubectl)
 source \$ZSH/oh-my-zsh.sh
 eval "\$(starship init zsh)"
 eval "\$(direnv hook zsh)"
-export GPG_TTY=\$(tty)
 EOF
 }
 

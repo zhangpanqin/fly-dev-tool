@@ -11,6 +11,7 @@ tap "homebrew/services"
 
 
 # 'brew install --cask'
+brew "git"
 # 配置 zsh
 cask "iterm2"
 # starship
@@ -18,7 +19,7 @@ cask "font-hack-nerd-font"
 # 'brew install'
 brew "zsh"
 brew "starship"
-brew "git"
+
 
 # 查看目录列表，tree -L 1 , -L 指定最大深度
 brew "tree"
@@ -28,7 +29,10 @@ brew "autojump"
 brew "jq"
 brew "python"
 brew "python"
-brew "gpg2"
+brew "gnupg"
+brew "pinentry-mac"
+brew "libjwt"
+brew "openjdk@11"
 
 # aws k8s 相关
 brew "awscli"
@@ -38,8 +42,8 @@ brew "terraform"
 brew "fzf"
 brew "kubectx"
 brew "helm"
-brew "libjwt"
-brew "openjdk@11"
+
+
 
 # 'brew install --cask'
 # 日常使用 app
