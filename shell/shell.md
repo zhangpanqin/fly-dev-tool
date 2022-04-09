@@ -66,4 +66,9 @@ else
     echo "没散装"
 fi
 ```
-
+### 使用管理员权限运行
+CURRENT_USER=$(whoami)
+if [[ $CURRENT_USER != "root" ]]; then
+echo "请使用 sudo 运行"
+exit 2
+fi

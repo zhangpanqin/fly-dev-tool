@@ -68,6 +68,3 @@ brew install kubectx
 
 
 
-## 参考资料
-
-[macOS Setup Guide](https://sourabhbajaj.com/mac-setup)
