@@ -6,19 +6,10 @@ plugins {
     id 'org.springframework.boot' version "${springBootVersion}" apply false
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
-ext {
-    guavaVersion = '31.1-jre'
-    commonsLang3Version = '3.12.0'
-    commonsCollections4Version = '4.4'
-    mapstructVersion = '1.4.2.Final'
-    lombokMapstructVersion = '0.2.0'
-    hutoolVersion = '5.7.22'
-    commonsPool2Version='2.11.1'
-}
 allprojects {
     java {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     repositories {
@@ -83,7 +74,7 @@ subprojects {
 }
 
 wrapper {
-    gradleVersion = '7.4.1'
+    gradleVersion = '7.4.2'
 }
 
 apply from: "${rootProject.projectDir}/gradle/git-hooks/git-hooks.gradle"
