@@ -1,0 +1,6 @@
+fileignoreconfig:
+- filename: java/spring-boot/src/main/resources/application.yaml
+  checksum: 77facaab1b65b571cc03baf1e79d70c7862f90971c978f7bcc14c6bc70167391
+- filename: java/spring-boot/build/resources/main/application.yaml
+  checksum: e269b5f7a738ab9fe49c8e3ffaa8ba73a2aa2b8dd43e7b7177341650ceb10339
+version: ""
