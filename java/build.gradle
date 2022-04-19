@@ -11,6 +11,22 @@ allprojects {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+    repositories {
+        mavenLocal()
+        maven {
+            name = 'maven center 和 jcenter 阿里云'
+            url = 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            name = 'spring 阿里云'
+            url = 'https://maven.aliyun.com/repository/spring'
+        }
+        maven {
+            name = 'google 阿里云'
+            url = 'https://maven.aliyun.com/repository/google'
+        }
+        mavenCentral()
+    }
 }
 
 subprojects {
@@ -30,15 +46,11 @@ subprojects {
     }
 
     configurations {
-        parentBom
-        runtimeOnly.extendsFrom(parentBom)
-        compileOnly.extendsFrom(parentBom)
-        annotationProcessor.extendsFrom(parentBom)
-        implementation.extendsFrom(parentBom)
+        annotationProcessor.extendsFrom(implementation)
     }
 
     dependencies {
-        parentBom platform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+        implementation(platform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES))
         implementation 'org.apache.commons:commons-lang3'
         implementation 'cn.hutool:hutool-all'
         implementation 'org.apache.commons:commons-collections4'
