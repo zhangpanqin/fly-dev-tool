@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.mflyyou.common.config.ApiDocumentConfig,\
+com.mflyyou.common.config.JacksonConfig,\
+  com.mflyyou.common.config.JpaConfig,\
+  com.mflyyou.common.config.GlobalExceptionHandlerConfig

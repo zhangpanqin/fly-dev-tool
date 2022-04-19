@@ -33,7 +33,7 @@ allprojects {
 subprojects {
     apply plugin: 'java'
     apply plugin: 'idea'
-
+    apply plugin: "maven-publish"
     configurations.all {
         resolutionStrategy {
             cacheChangingModulesFor 0, 'seconds'
@@ -42,6 +42,7 @@ subprojects {
             force "com.google.guava:guava:${guavaVersion}"
             force "cn.hutool:hutool-all:${hutoolVersion}"
             force "org.apache.commons:commons-pool2:${commonsPool2Version}"
+            force "org.springdoc:springdoc-openapi-ui:$springDocOpenapiUiVersion"
         }
     }
 
