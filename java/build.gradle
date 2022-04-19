@@ -6,6 +6,9 @@ plugins {
     id 'org.springframework.boot' version "${springBootVersion}" apply false
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
+def getVersion() {
+    return 'git rev-parse --short HEAD'.execute().text.trim()
+}
 allprojects {
     java {
         sourceCompatibility = JavaVersion.VERSION_17
