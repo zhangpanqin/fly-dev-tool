@@ -21,6 +21,10 @@ import javax.validation.constraints.NotNull;
 @Validated
 public class DemoController implements OrgApi {
 
+    /**
+     * 必须在类上加上  @Validated
+     */
+
     @Override
     @GetMapping
     public OrgResponse getById(@NotNull(message = "id 不能为空") Long id) {
