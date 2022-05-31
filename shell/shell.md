@@ -1,4 +1,4 @@
-## shell 插件
+## shell
 
 - jq，操作 json 文件
 
@@ -13,7 +13,63 @@ yum install jq -y
 ```shell
 # 2022-04-03-13-32-02
 date +"%Y-%m-%d-%H-%M-%S"
+# 获取当前日期   2020-07-18 14:35:06
+NowTime=$(/bin/date +%Y-%m-%d' '%H:%M:%S)
+echo ${NowTime}
+
+# 返回时间 2020-08-05-10-28-29
+file_time() {
+    echo $(date +%Y-%m-%d-%H-%M-%S)
+}
+
+# 返回时间戳,1970 到现在
+file_timestamp() {
+    echo $(date +%s)
+}
 ```
+
+- 添加多行到文件
+
+```bash
+#!/bin/bash
+# 自定义文本 END OF FILE 
+echo "abcd" >a.txt
+
+# <<EOF 定义文件的结束符
+cat >a.txt <<EOF
+AA111
+BB222
+CC333
+EOF
+```
+
+- 多行赋值变量
+
+```shell
+## 添加单行或多行内容到文本
+
+# <<EOF 定义文件的结束符
+AA=$(cat <<EOF
+11
+22
+EOF
+)
+# 保留换行添加双引号
+echo "$AA"
+
+```
+
+- 软连接
+
+```shell
+# 创建硬链接
+ln 源文件 目标文件
+
+# 创建软连接
+ln -s 源文件 目标文件
+```
+
+
 
 ## shell 模板
 
@@ -53,8 +109,6 @@ echo done!
 ssh local_centos7 "curl -fsSL -O https://raw.githubusercontent.com/zhangpanqin/fly-circleci/HEAD/not_set_eo_pipefail.sh ; /bin/bash ./not_set_eo_pipefail.sh ; rm ./not_set_eo_pipefail.sh"
 ```
 
-
-
 ## 有趣命令
 
 #### 判断程序是否安装
@@ -66,9 +120,12 @@ else
     echo "没散装"
 fi
 ```
-### 使用管理员权限运行
+#### 使用管理员权限运行
+```shell
 CURRENT_USER=$(whoami)
 if [[ $CURRENT_USER != "root" ]]; then
 echo "请使用 sudo 运行"
 exit 2
 fi
+```
+
