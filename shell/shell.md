@@ -56,7 +56,15 @@ EOF
 )
 # 保留换行添加双引号
 echo "$AA"
-
+json=$(
+    cat <<-END
+    {
+        "tag_name": "11",
+        "tag_name1": "11"
+    }
+END
+)
+echo $json
 ```
 
 - 软连接
