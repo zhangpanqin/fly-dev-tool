@@ -1,3 +1,7 @@
+## 代码仓库
+
+[fly-terraform](https://github.com/zhangpanqin/fly-terraform)
+
 ## 设置 Terraform token 用于访问
 
 ```shell

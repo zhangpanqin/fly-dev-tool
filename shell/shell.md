@@ -59,8 +59,8 @@ echo "$AA"
 json=$(
     cat <<-END
     {
-        "tag_name": "11",
-        "tag_name1": "11"
+    "tag_name": "11",
+    "tag_name1": "11"
     }
 END
 )
@@ -77,6 +77,15 @@ ln 源文件 目标文件
 ln -s 源文件 目标文件
 ```
 
+- 当前目录
+
+```shell
+#!/bin/bash
+set -eo pipefail
+CURRENT_DIR="$(dirname "$(readlink -f "${BASH_SOURCE:-$0}")")"
+echo ${CURRENT_DIR}
+```
+
 
 
 ## shell 模板
@@ -87,8 +96,6 @@ set -eo pipefail
 
 # 或者 bash -eo pipefail script.sh
 ```
-
-
 
 ## 远程执行命令
 

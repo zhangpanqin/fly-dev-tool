@@ -49,6 +49,7 @@ brew "helm"
 # 'brew install --cask'
 # 日常使用 app
 cask "google-chrome"
+cask "fig"
 cask "visual-studio-code"
 cask "snipaste"
 cask "1password"
