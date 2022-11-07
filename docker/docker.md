@@ -1,4 +1,5 @@
 ### colima
+可以在本地运行 docker 命令
 ```shell
 colima start
 colima stop
