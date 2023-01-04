@@ -1,6 +1,25 @@
-## shell
+## 推荐实践
 
-- jq，操作 json 文件
+```shell
+#!/bin/bash
+# -e 设置定义变量没有使用报错
+# -o pipefail 可以让管道命令报错了，可以让脚本也退出
+set -eo pipefail
+
+# 复杂命令赋值并且 export,需要分隔开，可以让脚本感知复杂命令报错
+AWS_ASSUME_ROLE=$(jq -er .assume_role < a.file")
+export AWS_ASSUME_ROLE
+
+# 或者 bash -eo pipefail script.sh
+```
+
+可以使用 shellcheck 检查脚本有没有不好的实践。
+
+
+
+## 基础操作
+
+#### jq，操作 json 文件
 
 ```shell
 yum install epel-release -y
@@ -8,7 +27,7 @@ yum update -y
 yum install jq -y
 ```
 
-- 年月日
+#### 年月日
 
 ```shell
 # 2022-04-03-13-32-02
@@ -28,7 +47,7 @@ file_timestamp() {
 }
 ```
 
-- 添加多行到文件
+#### 添加多行到文件
 
 ```bash
 #!/bin/bash
@@ -43,7 +62,7 @@ CC333
 EOF
 ```
 
-- 多行赋值变量
+#### 多行赋值变量
 
 ```shell
 ## 添加单行或多行内容到文本
@@ -67,7 +86,7 @@ END
 echo $json
 ```
 
-- 软连接
+#### 软连接
 
 ```shell
 # 创建硬链接
@@ -77,15 +96,18 @@ ln 源文件 目标文件
 ln -s 源文件 目标文件
 ```
 
-- 当前目录
+#### 当前目录
 
 ```shell
 #!/bin/bash
 set -eo pipefail
 CURRENT_DIR="$(dirname "$(readlink -f "${BASH_SOURCE:-$0}")")"
 echo ${CURRENT_DIR}
+```
 
+#### 获取脚本所在项目根目录
 
+```shell
 PROJECT_DIR=$(
   cd "$(dirname "$0")/.."
   pwd
@@ -93,15 +115,6 @@ PROJECT_DIR=$(
 ```
 
 
-
-## shell 模板
-
-```shell
-#!/bin/bash
-set -eo pipefail
-
-# 或者 bash -eo pipefail script.sh
-```
 
 ## 远程执行命令
 
@@ -141,7 +154,9 @@ else
     echo "没散装"
 fi
 ```
+
 #### 使用管理员权限运行
+
 ```shell
 CURRENT_USER=$(whoami)
 if [[ $CURRENT_USER != "root" ]]; then
@@ -176,4 +191,27 @@ echo "111"
 else
 exit 1
 fi
+```
+
+#### 遍历 json
+
+```shell
+JSON_TEST=$(
+cat <<EOF
+{
+  "items": [
+    {
+      "name": "xiaoming",
+      "age": 1
+    }
+  ]
+}
+EOF
+)
+
+for item in $(jq -er '.items[]| tostring' <<<"${JSON_TEST}"); do
+    name=$(jq -er '.name' <<<"${item}")
+    age=$(jq -er '.age' <<<"${item}")
+    echo "name is ${name}, age is ${age}"
+done
 ```
