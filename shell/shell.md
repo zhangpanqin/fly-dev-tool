@@ -84,6 +84,12 @@ ln -s 源文件 目标文件
 set -eo pipefail
 CURRENT_DIR="$(dirname "$(readlink -f "${BASH_SOURCE:-$0}")")"
 echo ${CURRENT_DIR}
+
+
+PROJECT_DIR=$(
+  cd "$(dirname "$0")/.."
+  pwd
+)
 ```
 
 
@@ -144,3 +150,30 @@ exit 2
 fi
 ```
 
+#### 提示输入值操作
+
+```shell
+read -r -p "Do you want to install ? (Y/n) " yn
+case $yn in
+[nN])
+  exit 0
+  ;;
+*)
+  ;;
+esac
+```
+
+#### 判断数据是否包含
+
+```shell
+SUPPORT_ENVIRONMENT=(
+sandbox
+prod
+)
+
+if echo "${SUPPORT_ENVIRONMENT[*]}" | grep -q -w "${ENVIRONMENT}"; then
+echo "111"
+else
+exit 1
+fi
+```
