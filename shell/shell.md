@@ -119,23 +119,25 @@ ln 源文件 目标文件
 ln -s 源文件 目标文件
 ```
 
-#### 当前目录
+#### 获取执行的脚本所在目录
 
 ```shell
 #!/bin/bash
 set -eo pipefail
-CURRENT_DIR="$(dirname "$(readlink -f "${BASH_SOURCE:-$0}")")"
-echo ${CURRENT_DIR}
+SCRIPT_FILE_DIR="$(dirname "$(readlink -f "${BASH_SOURCE:-$0}")")"
+echo ${SCRIPT_FILE_DIR}
 ```
 
-#### 获取脚本所在项目根目录
+
 
 ```shell
-PROJECT_DIR=$(
-  cd "$(dirname "$0")/.."
+PROJECT_HOME_DIR=$(
+  cd "${SCRIPT_FILE_DIR}/.."
   pwd
 )
 ```
+
+
 
 
 

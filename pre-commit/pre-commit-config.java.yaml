@@ -19,6 +19,14 @@ repos:
       - id: end-of-file-fixer
       - id: mixed-line-ending
       - id: trailing-whitespace
+  - repo: https://github.com/syntaqx/git-hooks
+    rev: '0e275832e1b85f5a430241ab8f56185d5708e264'
+    hooks:
+      - id: shellcheck
+        exclude_types: []
+        files: \.sh$
+        types: [file]
+        args: []
   - repo: https://github.com/thlorenz/doctoc
     rev: v2.2.0
     hooks:
@@ -43,7 +51,14 @@ repos:
         args: ["--scan"]
       - id: commit-message-format-check
         name: commit message format check
-        entry: .shared/hooks/commit-msg.sh
+        entry: .hooks/commit-msg.sh
         always_run: true
         language: system
         stages: [commit-msg]
+      - id: tag-message-format-check
+        name: tag message format check
+        entry: hooks/tag-msg.sh
+        always_run: true
+        language: system
+        stages: [push]
+
